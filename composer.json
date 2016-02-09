@@ -1,12 +1,12 @@
 {
-    "name": "maciekpaprocki/:package_name",
+    "name": "maciekpaprocki/wordpress-guzzle-wrapper",
     "type": "library",
-    "description": ":package_description",
+    "description": "Wordpress guzzle wrapper ",
     "keywords": [
         "maciekpaprocki",
-        ":package_name"
+        "wordpress-guzzle-wrapper"
     ],
-    "homepage": "https://github.com/maciekpaprocki/:package_name",
+    "homepage": "https://github.com/bureau-va/wordpress-guzzle-wrapper",
     "license": "MIT",
     "authors": [
         {
@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "maciekpaprocki\\:package_name\\": "src"
+            "maciekpaprocki\\wordpress-guzzle-wrapper\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "maciekpaprocki\\:package_name\\Test\\": "tests"
+            "maciekpaprocki\\wordpress-guzzle-wrapper\\Test\\": "tests"
         }
     },
     "scripts": {
