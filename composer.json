@@ -1,0 +1,45 @@
+{
+    "name": "maciekpaprocki/:package_name",
+    "type": "library",
+    "description": ":package_description",
+    "keywords": [
+        "maciekpaprocki",
+        ":package_name"
+    ],
+    "homepage": "https://github.com/maciekpaprocki/:package_name",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maciej Paprocki",
+            "email": "maciekpaprocki@gmail.com",
+            "homepage": "paprocki.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "~5.5|~7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1",
+        "squizlabs/php_codesniffer": "~2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "maciekpaprocki\\:package_name\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "maciekpaprocki\\:package_name\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
