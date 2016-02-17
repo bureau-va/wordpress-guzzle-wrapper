@@ -7,7 +7,7 @@
  */
 
 namespace BureauVa\WordpressGuzzle\Transaction;
-
+use GuzzleHttp\Promise\Promise;
 
 /**
  * Class Transaction
@@ -17,8 +17,9 @@ namespace BureauVa\WordpressGuzzle\Transaction;
 class Transaction
 {
 
-    public $promises;
+    public $promises = [];
     public $client = null;
+
     /**
      * Transaction constructor. You can pass clien
      * @param null $client
@@ -29,21 +30,55 @@ class Transaction
     }
 
     /**
-     * @param $promise
+     * @param $name
+     * @param Promise $promise
      * @return $this
      */
-    public function addPromise($name,$promise){
+    public function addPromise($name, Promise $promise)
+    {
         $this->promises[$name] = $promise;
         return $this;
     }
 
     /**
      * Awaits all the promises and returns data
-     *
-     * @return array;
+     * @return array
      */
-    public function unwrap(){
-        //TODO: implement function that unwraps all the requests
-        return null;
+    public function unwrap()
+    {
+
+        return  \GuzzleHttp\Promise\unwrap($this->promises);
+    }
+
+    /**
+     * @return null
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param $client
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPromises()
+    {
+        return $this->promises;
+    }
+
+    /**
+     * @param $promises
+     */
+    public function setPromises($promises)
+    {
+        $this->promises = $promises;
     }
 }

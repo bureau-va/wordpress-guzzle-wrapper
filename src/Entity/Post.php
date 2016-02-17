@@ -16,16 +16,9 @@ namespace BureauVa\WordpressGuzzle\Entity;
 
 class Post
 {
-    /**
-     * Post constructor. Set data
-     * @param $data
-     */
-    public function __construct($data)
-    {
-
-    }
 
     public function getCategories(){
         //TODO: implement get categories
     }
+
 }

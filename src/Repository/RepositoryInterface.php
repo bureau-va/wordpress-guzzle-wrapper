@@ -16,10 +16,11 @@ namespace BureauVa\WordpressGuzzle\Repository;
 
 interface RepositoryInterface
 {
+
     /**
      * @param $promise
      * @return null
      */
-    public function attachPromise($promise);
-
+    public function setClient($client);
+    public function getClient();
 }

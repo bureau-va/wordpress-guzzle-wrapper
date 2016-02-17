@@ -7,22 +7,41 @@
  */
 
 namespace BureauVa\WordpressGuzzle\Tests;
+
 use BureauVa\WordpressGuzzle\Transaction\Transaction;
-use BureauVa\WordpressGuzzle\Repository\Post as PostRepository;
+use GuzzleHttp\Client;
+use BureauVa\WordpressGuzzle\Repository\Post as PostRepo;
 
 
 /**
  * Class TransitionTest
  * @package MaciekPaprocki\WordpressGuzzle
  */
-
 class TransactionTest extends \PHPUnit_Framework_TestCase
 {
-    public function testTransaction(){
+    /**
+     * Testing main usage
+     */
+    public function testTransaction()
+    {
+
+        $client = new Client([
+            'base_uri' => 'http://ec2-54-229-0-236.eu-west-1.compute.amazonaws.com/admin/wp-json/',
+
+        ]);
         $transaction = new Transaction();
-        $transaction->addPromise('posts',(new PostRepository())->findOneById(1));
+        $repository = new PostRepo();
+        $repository->setClient($client);
+        $transaction
+            ->addPromise('testarray1', $repository->findOneById(1))
+            ->addPromise('testarray2', $repository->findByIds([1]));
+
         $data = $transaction->unwrap();
-        $this->assertTrue(true);
+
+        $this->assertArrayHasKey('testarray1', $data);
+        $this->assertArrayHasKey('testarray2', $data);
+
+
     }
 
 }

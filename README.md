@@ -9,8 +9,8 @@
 
 Replace ```wordpress-guzzle-wrapper``` ```Wordpress guzzle wrapper ```
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+Simple helper for working with Guzzle and wordpress rest API
+
 
 ## Install
 
@@ -19,10 +19,19 @@ Via Composer
 ``` bash
 $ composer require maciekpaprocki/wordpress-guzzle-wrapper
 ```
-
+ 
 ## Usage
 
+### Transactions
 ``` php
+
+    use BureauVA\WordpressGuzzle\Transaction\Transaction
+    use GuzzleHttp\Client;
+    $client = new Client();
+    $transaction = new Transaction();
+    $transaction->setClient($client);
+    
+
 
 ```
 

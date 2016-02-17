@@ -16,33 +16,28 @@ namespace BureauVa\WordpressGuzzle\Repository;
 
 class Post extends RepositoryAbstract
 {
-    /**
-     * Post Repo constructor.
-     */
-    public function __construct()
-    {
-    }
+    const PATH = 'posts';
 
     /**
      * finds Multiple posts by array of ids
      * @param $id
      * @return null
      */
-    public function findByIds($id){
-        if(is_numeric($id)){
-            return $this->findOneById($id);
-        }else{
-            //TODO: implement actuall body of the function
-            return null;
-        }
+    public function findByIds($ids)
+    {
+
+        return $this->createPromise(self::PATH, ['post__in' => $ids]);
     }
+
     /**
      * finds post by id
      * @param $id
      * @return null
      */
-    public function findOneById($id){
-        return null;
-        //TODO: implement actuall body of the function
+    public function findOneById($id)
+    {
+
+
+        return $this->createPromise(self::PATH . '/' . $id);
     }
 }
