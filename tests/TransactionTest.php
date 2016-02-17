@@ -7,7 +7,7 @@
  */
 
 namespace BureauVa\WordpressGuzzle\Tests;
-use BureauVa\WordpressGuzzle\Transaction;
+use BureauVa\WordpressGuzzle\Transaction\Transaction;
 use BureauVa\WordpressGuzzle\Repository\Post as PostRepository;
 
 
@@ -20,8 +20,9 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
 {
     public function testTransaction(){
         $transaction = new Transaction();
-        $transaction->addPromise('posts',(new PostRepository())->findByOne());
+        $transaction->addPromise('posts',(new PostRepository())->findOneById(1));
         $data = $transaction->unwrap();
+        $this->assertTrue(true);
     }
 
 }

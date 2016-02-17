@@ -16,9 +16,13 @@ namespace BureauVa\WordpressGuzzle\Repository;
 
 Abstract class RepositoryAbstract implements RepositoryInterface
 {
-    public function attachPromise()
+    /**
+     * Keeps reference to promise.
+     * @param $promise
+     */
+    public function attachPromise($promise)
     {
-        $this->
+        $this->promise = $promise;
     }
 
 }

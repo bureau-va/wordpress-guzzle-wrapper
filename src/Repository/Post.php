@@ -22,5 +22,16 @@ class Post extends RepositoryAbstract
     public function __construct()
     {
     }
-
+    public function findByIds($id){
+        if(is_numeric($id)){
+            return $this->findOneById($id);
+        }else{
+            //TODO: implement actuall body of the function
+            return null;
+        }
+    }
+    public function findOneById($id){
+        return null;
+        //TODO: implement actuall body of the function
+    }
 }
