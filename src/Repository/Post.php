@@ -22,6 +22,12 @@ class Post extends RepositoryAbstract
     public function __construct()
     {
     }
+
+    /**
+     * finds Multiple posts by array of ids
+     * @param $id
+     * @return null
+     */
     public function findByIds($id){
         if(is_numeric($id)){
             return $this->findOneById($id);
@@ -30,6 +36,11 @@ class Post extends RepositoryAbstract
             return null;
         }
     }
+    /**
+     * finds post by id
+     * @param $id
+     * @return null
+     */
     public function findOneById($id){
         return null;
         //TODO: implement actuall body of the function
