@@ -1,6 +1,6 @@
 <?php
 
-namespace MaciekPaprocki\WordpressGuzzle\Tests;
+namespace BureauVa\WordpressGuzzle\Tests;
 
 /**
  * Class ExampleTest

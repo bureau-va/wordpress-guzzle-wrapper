@@ -6,7 +6,7 @@
  * Time: 10:57
  */
 
-namespace MaciekPaprocki\WordpressGuzzle\Entity;
+namespace BureauVa\WordpressGuzzle\Entity;
 
 
 /**

@@ -3,29 +3,23 @@
  * Created by Maciej Paprocki for Bureau-VA.
  * Date: 17/02/2016
  * Project Name: MaciekPaprocki\WordpressGuzzle
- * Time: 10:59
+ * Time: 12:14
  */
 
-namespace BureauVa\WordpressGuzzle\Entity;
+namespace BureauVa\WordpressGuzzle\Transaction;
 
 
 /**
- * Class Category
+ * Class Transaction
  * @package MaciekPaprocki\WordpressGuzzle
  */
 
-class Category
+class Transaction
 {
-    /**
-     * Category constructor.
-     *
-     */
+    public $promises;
+
     public function __construct()
     {
-
     }
 
-    public function getPosts(){
-        //TODO: implement get posts
-    }
 }

@@ -6,7 +6,7 @@
  * Time: 11:24
  */
 
-namespace MaciekPaprocki\WordpressGuzzle\Repository;
+namespace BureauVa\WordpressGuzzle\Repository;
 
 
 /**
@@ -16,8 +16,10 @@ namespace MaciekPaprocki\WordpressGuzzle\Repository;
 
 interface RepositoryInterface
 {
-    public function attachPromise(){
-
-    }
+    /**
+     * @param $promise
+     * @return null
+     */
+    public function attachPromise($promise);
 
 }

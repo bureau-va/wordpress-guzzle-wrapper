@@ -3,22 +3,24 @@
  * Created by Maciej Paprocki for Bureau-VA.
  * Date: 17/02/2016
  * Project Name: MaciekPaprocki\WordpressGuzzle
- * Time: 10:46
+ * Time: 12:17
  */
 
 namespace BureauVa\WordpressGuzzle\Repository;
 
 
 /**
- * Class AbstractRepository
+ * Class Post
  * @package MaciekPaprocki\WordpressGuzzle
  */
 
-Abstract class RepositoryAbstract implements RepositoryInterface
+class Post extends RepositoryAbstract
 {
-    public function attachPromise()
+    /**
+     * Post Repo constructor.
+     */
+    public function __construct()
     {
-        $this->
     }
 
 }
