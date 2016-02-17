@@ -28,12 +28,12 @@
   },
   "autoload": {
     "psr-4": {
-      "MaciekPaprocki\\WordpressGuzzle\\": "src"
+      "BureauVa\\WordpressGuzzle\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "MaciekPaprocki\\WordpressGuzzle\\Test\\": "tests"
+      "BureauVa\\WordpressGuzzle\\Test\\": "tests"
     }
   },
   "scripts": {
