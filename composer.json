@@ -1,45 +1,46 @@
 {
-    "name": "maciekpaprocki/wordpress-guzzle-wrapper",
-    "type": "library",
-    "description": "Wordpress guzzle wrapper ",
-    "keywords": [
-        "maciekpaprocki",
-        "wordpress-guzzle-wrapper"
-    ],
-    "homepage": "https://github.com/bureau-va/wordpress-guzzle-wrapper",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Maciej Paprocki",
-            "email": "maciekpaprocki@gmail.com",
-            "homepage": "paprocki.co.uk",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php" : "~5.5|~7.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit" : "4.*",
-        "scrutinizer/ocular": "~1.1",
-        "squizlabs/php_codesniffer": "~2.3"
-    },
-    "autoload": {
-        "psr-4": {
-            "maciekpaprocki\\wordpress-guzzle-wrapper\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "maciekpaprocki\\wordpress-guzzle-wrapper\\Test\\": "tests"
-        }
-    },
-    "scripts": {
-        "test": "phpunit"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        }
+  "name": "maciekpaprocki/wordpress-guzzle-wrapper",
+  "type": "library",
+  "description": "Wordpress guzzle wrapper ",
+  "keywords": [
+    "maciekpaprocki",
+    "wordpress-guzzle-wrapper"
+  ],
+  "homepage": "https://github.com/bureau-va/wordpress-guzzle-wrapper",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Maciej Paprocki",
+      "email": "maciekpaprocki@gmail.com",
+      "homepage": "http://paprocki.co.uk",
+      "role": "Developer"
     }
+  ],
+  "require": {
+    "php": "~5.5|~7.0",
+    "pimple/pimple": "^3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*",
+    "scrutinizer/ocular": "~1.1",
+    "squizlabs/php_codesniffer": "~2.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "MaciekPaprocki\\WordpressGuzzle\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MaciekPaprocki\\WordpressGuzzle\\Test\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
 }
