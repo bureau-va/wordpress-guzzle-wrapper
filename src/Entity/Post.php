@@ -16,8 +16,8 @@ namespace BureauVa\WordpressGuzzle\Entity;
 class Post extends Entity
 {
 
+
     public function getCategories()
     {
-        //TODO: implement get categories
     }
 }

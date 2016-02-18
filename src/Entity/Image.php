@@ -15,7 +15,4 @@ namespace BureauVa\WordpressGuzzle\Entity;
 
 class Image extends Entity
 {
-    public function __construct()
-    {
-    }
 }

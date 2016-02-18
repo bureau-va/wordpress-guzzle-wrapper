@@ -33,15 +33,16 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
         $repository = new PostRepo();
         $repository->setClient($client);
         $transaction
-            ->addPromise('testarray1', $repository->findOneById(1))
-            ->addPromise('testarray2', $repository->findByIds([1]));
+            ->addPromise('test1', $repository->findOneById(1))
+            ->addPromise('test2', $repository->findByIds([1]));
 
         $data = $transaction->unwrap();
 
-        $this->assertArrayHasKey('testarray1', $data);
+        $this->assertArrayHasKey('test1', $data);
+        $this->assertEquals(1, $data['test1']->id);
 
-        $this->assertArrayHasKey('testarray2', $data);
-
+        $this->assertArrayHasKey('test2', $data);
+        $this->assertEquals(1, $data['test2'][0]->id);
 
     }
 

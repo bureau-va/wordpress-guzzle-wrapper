@@ -22,9 +22,4 @@ class Category extends Entity
     public function __construct()
     {
     }
-
-    public function getPosts()
-    {
-        //TODO: implement get posts
-    }
 }

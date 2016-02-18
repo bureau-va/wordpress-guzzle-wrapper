@@ -21,16 +21,24 @@ class StringHelper
      * @param array $noStrip
      * @return mixed|string
      */
+    public static function noFirstCamelCase($str)
+    {
+        $str = self::camelCase($str);
+        $str = lcfirst($str);
+        return $str;
+    }
+
+    /**
+     * @param $str
+     * @return mixed|string
+     */
     public static function camelCase($str)
     {
-        // non-alpha and non-numeric characters become spaces
-        $str = preg_replace('/[^\w\d]+/', ' ', $str);
+        $str = strtolower($str);
+        $str = preg_replace('/[^a-z0-9]+/', ' ', $str);
         $str = trim($str);
-        // uppercase the first character of each word
         $str = ucwords($str);
         $str = str_replace(" ", "", $str);
-        $str = lcfirst($str);
-
         return $str;
     }
 }

@@ -18,6 +18,7 @@ use GuzzleHttp\Psr7\Response;
 abstract class RepositoryAbstract implements RepositoryInterface
 {
     protected $client;
+    protected $reducers = ['BureauVa\\WordpressGuzzle\\Reducer\\CastType::castType'];
 
     /**
      * let us keep reference to our client
@@ -63,10 +64,55 @@ abstract class RepositoryAbstract implements RepositoryInterface
     {
         $encodedParam = $this->createRequestQuery($parameters);
         $query = $encodedParam ? '?' . $encodedParam : '';
+        $reducers = $this->getReducers();
         return $this->client->requestAsync('GET', $address . $query)
-            ->then(function (Response $res) {
-                //parses as Json
-                return \json_decode((string) $res->getBody());
+            ->then(function (Response $res) use ($reducers) {
+
+                $data = \json_decode((string)$res->getBody());
+
+                if ($data instanceof \stdClass) {
+                    foreach ($reducers as $reducer) {
+                        $data = \call_user_func($reducer, $data);
+                    }
+                } elseif (is_array($data)) {
+                    foreach ($data as $key => $val) {
+                        foreach ($reducers as $reducer) {
+                            $data[$key] = \call_user_func($reducer, $val);
+                        }
+                    }
+                }
+
+                return $data;
+            }, function () {
+                echo 'error';
             });
+    }
+
+    /**
+     * @return array
+     */
+    public function getReducers()
+    {
+        return $this->reducers;
+    }
+
+    /**
+     * @param $reducers
+     * @return $this
+     */
+    public function setReducers($reducers)
+    {
+        $this->reducers = $reducers;
+        return $this;
+    }
+
+    /**
+     * @param $reducer
+     * @return $this
+     */
+    public function addReducer($reducer)
+    {
+        $this->reducers[] = $reducer;
+        return $this;
     }
 }

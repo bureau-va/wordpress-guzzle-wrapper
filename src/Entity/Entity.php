@@ -8,14 +8,17 @@
 
 namespace BureauVa\WordpressGuzzle\Entity;
 
+use BureauVa\WordpressGuzzle\Helper\StringHelper;
+
 /**
  * Class Entity
  * @package MaciekPaprocki\WordpressGuzzle
  */
 
-abstract class Entity implements ArrayAccess
+abstract class Entity implements \ArrayAccess
 {
     protected $internaleCounter = 0;
+
     /**
      * @param $offset
      * @param $value
@@ -26,7 +29,7 @@ abstract class Entity implements ArrayAccess
             $this->{$this->internaleCounter} = $value;
             $this->internaleCounter++;
         } else {
-            $this->container[$offset] = $value;
+            $this->{$offset} = $value;
         }
     }
 
@@ -54,5 +57,17 @@ abstract class Entity implements ArrayAccess
     public function offsetGet($offset)
     {
         return isset($this->{$offset}) ? $this->{$offset} : null;
+    }
+
+    /**
+     * @param $name
+     * @param $val
+     * @return $this
+     */
+    public function setSecure($name, $val)
+    {
+        $name = StringHelper::noFirstCamelCase($name);
+        $this->{$name} = $val;
+        return $this;
     }
 }
