@@ -8,7 +8,6 @@
 
 namespace BureauVa\WordpressGuzzle\Repository;
 
-
 /**
  * Class Post
  * @package MaciekPaprocki\WordpressGuzzle
@@ -17,7 +16,6 @@ namespace BureauVa\WordpressGuzzle\Repository;
 class Post extends RepositoryAbstract
 {
     const PATH = 'posts';
-
     /**
      * finds Multiple posts by array of ids
      * @param $id
@@ -25,7 +23,6 @@ class Post extends RepositoryAbstract
      */
     public function findByIds($ids)
     {
-
         return $this->createPromise(self::PATH, ['post__in' => $ids]);
     }
 
@@ -36,8 +33,6 @@ class Post extends RepositoryAbstract
      */
     public function findOneById($id)
     {
-
-
         return $this->createPromise(self::PATH . '/' . $id);
     }
 }

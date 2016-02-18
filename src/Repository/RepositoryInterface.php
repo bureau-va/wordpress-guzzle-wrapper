@@ -8,7 +8,6 @@
 
 namespace BureauVa\WordpressGuzzle\Repository;
 
-
 /**
  * Interface RepositoryInterface
  * @package MaciekPaprocki\WordpressGuzzle

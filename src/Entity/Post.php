@@ -8,17 +8,16 @@
 
 namespace BureauVa\WordpressGuzzle\Entity;
 
-
 /**
  * Class Post
  * @package MaciekPaprocki\WordpressGuzzle
  */
 
-class Post
+class Post extends Entity
 {
 
-    public function getCategories(){
+    public function getCategories()
+    {
         //TODO: implement get categories
     }
-
 }

@@ -1,30 +1,21 @@
 <?php
 /**
  * Created by Maciej Paprocki for Bureau-VA.
- * Date: 17/02/2016
+ * Date: 18/02/2016
  * Project Name: MaciekPaprocki\WordpressGuzzle
- * Time: 10:59
+ * Time: 12:10
  */
 
 namespace BureauVa\WordpressGuzzle\Entity;
 
 /**
- * Class Category
+ * Class Image
  * @package MaciekPaprocki\WordpressGuzzle
  */
 
-class Category extends Entity
+class Image extends Entity
 {
-    /**
-     * Category constructor.
-     *
-     */
     public function __construct()
     {
-    }
-
-    public function getPosts()
-    {
-        //TODO: implement get posts
     }
 }

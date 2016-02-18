@@ -7,6 +7,7 @@
  */
 
 namespace BureauVa\WordpressGuzzle\Transaction;
+
 use GuzzleHttp\Promise\Promise;
 
 /**
@@ -46,7 +47,6 @@ class Transaction
      */
     public function unwrap()
     {
-
         return  \GuzzleHttp\Promise\unwrap($this->promises);
     }
 

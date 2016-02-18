@@ -39,6 +39,7 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
         $data = $transaction->unwrap();
 
         $this->assertArrayHasKey('testarray1', $data);
+
         $this->assertArrayHasKey('testarray2', $data);
 
 

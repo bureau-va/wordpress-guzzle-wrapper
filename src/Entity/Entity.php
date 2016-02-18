@@ -8,20 +8,20 @@
 
 namespace BureauVa\WordpressGuzzle\Entity;
 
-
 /**
  * Class Entity
  * @package MaciekPaprocki\WordpressGuzzle
  */
 
-Abstract class Entity implements ArrayAccess
+abstract class Entity implements ArrayAccess
 {
     protected $internaleCounter = 0;
     /**
      * @param $offset
      * @param $value
      */
-    public function offsetSet($offset, $value) {
+    public function offsetSet($offset, $value)
+    {
         if (is_null($offset)) {
             $this->{$this->internaleCounter} = $value;
             $this->internaleCounter++;
@@ -34,14 +34,16 @@ Abstract class Entity implements ArrayAccess
      * @param $offset
      * @return bool
      */
-    public function offsetExists($offset) {
+    public function offsetExists($offset)
+    {
         return isset($this->{$offset});
     }
 
     /**
      * @param $offset
      */
-    public function offsetUnset($offset) {
+    public function offsetUnset($offset)
+    {
         unset($this->{$offset});
     }
 
@@ -49,7 +51,8 @@ Abstract class Entity implements ArrayAccess
      * @param $offset
      * @return null
      */
-    public function offsetGet($offset) {
+    public function offsetGet($offset)
+    {
         return isset($this->{$offset}) ? $this->{$offset} : null;
     }
 }

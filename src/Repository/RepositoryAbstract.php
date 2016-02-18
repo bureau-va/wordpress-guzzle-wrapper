@@ -9,13 +9,13 @@
 namespace BureauVa\WordpressGuzzle\Repository;
 
 use GuzzleHttp\Promise\Promise;
-
+use GuzzleHttp\Psr7\Response;
 
 /**
  * Class AbstractRepository
  * @package MaciekPaprocki\WordpressGuzzle
  */
-Abstract class RepositoryAbstract implements RepositoryInterface
+abstract class RepositoryAbstract implements RepositoryInterface
 {
     protected $client;
 
@@ -45,8 +45,9 @@ Abstract class RepositoryAbstract implements RepositoryInterface
      */
     public function createRequestQuery($data)
     {
-        if (empty($data))
+        if (empty($data)) {
             return '';
+        }
 
         return http_build_query([
             'filter' => $data
@@ -60,10 +61,12 @@ Abstract class RepositoryAbstract implements RepositoryInterface
      */
     public function createPromise($address, $parameters = null)
     {
-
         $encodedParam = $this->createRequestQuery($parameters);
         $query = $encodedParam ? '?' . $encodedParam : '';
-        return $this->client->getAsync($address . $query);
+        return $this->client->requestAsync('GET', $address . $query)
+            ->then(function (Response $res) {
+                //parses as Json
+                return \json_decode((string) $res->getBody());
+            });
     }
-
 }
