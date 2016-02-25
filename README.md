@@ -70,9 +70,9 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-downloads]: https://img.shields.io/packagist/dt/maciekpaprocki/wordpress-guzzle-wrapper.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/maciekpaprocki/wordpress-guzzle-wrapper
-[link-travis]: https://travis-ci.org/maciekpaprocki/wordpress-guzzle-wrapper
-[link-scrutinizer]: https://scrutinizer-ci.com/g/maciekpaprocki/wordpress-guzzle-wrapper/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/maciekpaprocki/wordpress-guzzle-wrapper
-[link-downloads]: https://packagist.org/packages/maciekpaprocki/wordpress-guzzle-wrapper
-[link-author]: https://github.com/maciekpaprocki
+[link-travis]: https://travis-ci.org/bureau-va/wordpress-guzzle-wrapper
+[link-scrutinizer]: https://scrutinizer-ci.com/g/bureau-va/wordpress-guzzle-wrapper/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/bureau-va/wordpress-guzzle-wrapper
+[link-downloads]: https://packagist.org/packages/bureau-va/wordpress-guzzle-wrapper
+[link-author]: https://github.com/bureau-va
 [link-contributors]: ../../contributors
