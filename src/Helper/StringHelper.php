@@ -14,7 +14,9 @@ class StringHelper
 {
     /**
      * converts to camel case. Shamefully stolen from.
+     *
      * @param $str
+     *
      * @return string
      */
     public static function noFirstCamelCase($str)
@@ -27,6 +29,7 @@ class StringHelper
 
     /**
      * @param $str
+     *
      * @return string
      */
     public static function camelCase($str)
