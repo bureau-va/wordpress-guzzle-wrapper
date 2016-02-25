@@ -59,7 +59,7 @@ class Pool
     }
 
     /**
-     * @param array $promise
+     * @param array $promises
      */
     public function setPromises($promises)
     {

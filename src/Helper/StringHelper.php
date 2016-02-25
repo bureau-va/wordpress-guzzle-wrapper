@@ -14,11 +14,8 @@ class StringHelper
 {
     /**
      * converts to camel case. Shamefully stolen from.
-     *
      * @param $str
-     * @param array $noStrip
-     *
-     * @return mixed|string
+     * @return string
      */
     public static function noFirstCamelCase($str)
     {
@@ -30,8 +27,7 @@ class StringHelper
 
     /**
      * @param $str
-     *
-     * @return mixed|string
+     * @return string
      */
     public static function camelCase($str)
     {
