@@ -3,23 +3,20 @@
  * Created by Maciej Paprocki for Bureau-VA.
  * Date: 17/02/2016
  * Project Name: MaciekPaprocki\WordpressGuzzle
- * Time: 11:24
+ * Time: 11:24.
  */
-
 namespace BureauVa\WordpressGuzzle\Repository;
 
-/**
- * Interface RepositoryInterface
- * @package MaciekPaprocki\WordpressGuzzle
- */
+use GuzzleHttp\Client;
 
+/**
+ * Interface RepositoryInterface.
+ */
 interface RepositoryInterface
 {
-
     /**
      * @param $promise
-     * @return null
      */
-    public function setClient($client);
+    public function setClient(Client $client);
     public function getClient();
 }

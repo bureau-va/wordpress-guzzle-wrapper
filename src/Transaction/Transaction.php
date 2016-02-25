@@ -3,26 +3,23 @@
  * Created by Maciej Paprocki for Bureau-VA.
  * Date: 17/02/2016
  * Project Name: MaciekPaprocki\WordpressGuzzle
- * Time: 12:14
+ * Time: 12:14.
  */
-
 namespace BureauVa\WordpressGuzzle\Transaction;
 
 use GuzzleHttp\Promise\Promise;
 
 /**
- * Class Transaction
- * @package MaciekPaprocki\WordpressGuzzle
+ * Class Transaction.
  */
-
 class Transaction
 {
-
     public $promises = [];
     public $client = null;
 
     /**
-     * Transaction constructor. You can pass clien
+     * Transaction constructor. You can pass clien.
+     *
      * @param null $client
      */
     public function __construct($client = null)
@@ -33,16 +30,19 @@ class Transaction
     /**
      * @param $name
      * @param Promise $promise
+     *
      * @return $this
      */
     public function addPromise($name, Promise $promise)
     {
         $this->promises[$name] = $promise;
+
         return $this;
     }
 
     /**
-     * Awaits all the promises and returns data
+     * Awaits all the promises and returns data.
+     *
      * @return array
      */
     public function unwrap()
@@ -51,7 +51,6 @@ class Transaction
     }
 
     /**
-     * @return null
      */
     public function getClient()
     {

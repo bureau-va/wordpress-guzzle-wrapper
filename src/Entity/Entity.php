@@ -3,18 +3,13 @@
  * Created by Maciej Paprocki for Bureau-VA.
  * Date: 17/02/2016
  * Project Name: MaciekPaprocki\WordpressGuzzle
- * Time: 11:27
+ * Time: 11:27.
  */
-
 namespace BureauVa\WordpressGuzzle\Entity;
 
-use BureauVa\WordpressGuzzle\Helper\StringHelper;
-
 /**
- * Class Entity
- * @package MaciekPaprocki\WordpressGuzzle
+ * Class Entity.
  */
-
 abstract class Entity implements \ArrayAccess
 {
     protected $internaleCounter = 0;
@@ -27,7 +22,7 @@ abstract class Entity implements \ArrayAccess
     {
         if (is_null($offset)) {
             $this->{$this->internaleCounter} = $value;
-            $this->internaleCounter++;
+            ++$this->internaleCounter;
         } else {
             $this->{$offset} = $value;
         }
@@ -35,6 +30,7 @@ abstract class Entity implements \ArrayAccess
 
     /**
      * @param $offset
+     *
      * @return bool
      */
     public function offsetExists($offset)
@@ -52,22 +48,9 @@ abstract class Entity implements \ArrayAccess
 
     /**
      * @param $offset
-     * @return null
      */
     public function offsetGet($offset)
     {
         return isset($this->{$offset}) ? $this->{$offset} : null;
-    }
-
-    /**
-     * @param $name
-     * @param $val
-     * @return $this
-     */
-    public function setSecure($name, $val)
-    {
-        $name = StringHelper::noFirstCamelCase($name);
-        $this->{$name} = $val;
-        return $this;
     }
 }
