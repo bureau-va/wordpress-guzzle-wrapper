@@ -30,7 +30,7 @@ class CastType
      */
     public function castType($ob, $typeName = null)
     {
-        if (!$typeName) {
+        if ($typeName === null) {
             $typeName = $this->typeName;
         }
 
