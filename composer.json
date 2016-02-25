@@ -38,7 +38,7 @@
   },
   "scripts": {
     "test": "phpunit",
-    "fix": "php-cs-fixer fix src && php-cs-fixer fix tests",
+    "fix": "php-cs-fixer fix src --level=symfony && php-cs-fixer fix tests --level=symfony",
     "pre-commit": "composer fix && composer test"
   },
   "extra": {

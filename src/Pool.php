@@ -30,11 +30,15 @@ class Pool
      */
     public function unwrap()
     {
-        if (empty($this->getPromises())) {
+        $promises = $this->getPromises();
+        if (empty($promises)) {
             return [];
         }
+        foreach($promises as $key => $promise){
+            $promises[$key] = $this->attachTransforms($promise);
+        }
 
-        return \GuzzleHttp\Promise\unwrap($this->getPromises());
+        return \GuzzleHttp\Promise\unwrap($promises);
     }
 
     /**
@@ -44,7 +48,7 @@ class Pool
      */
     public function addPromise($key, Promise $query)
     {
-        $query = $this->attachTransforms($query);
+
         $this->promises[$key] = $query;
 
         return $this;
@@ -109,7 +113,7 @@ class Pool
 
         return $promise->then(function ($res) use ($transformers) {
 
-            $data = \json_decode((string) $res->getBody());
+            $data = \json_decode((string)$res->getBody());
 
             if ($data instanceof \stdClass) {
                 foreach ($transformers as $transformer) {
@@ -126,4 +130,5 @@ class Pool
             return $data;
         });
     }
+
 }
