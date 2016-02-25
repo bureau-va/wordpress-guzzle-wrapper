@@ -8,13 +8,13 @@
 namespace BureauVa\WordpressGuzzle\Tests;
 
 use BureauVa\WordpressGuzzle\Pool;
-use BureauVa\WordpressGuzzle\Repository\Post;
+use BureauVa\WordpressGuzzle\Entity\Post;
 use BureauVa\WordpressGuzzle\Transformer\CastType;
 use GuzzleHttp\Client;
 use BureauVa\WordpressGuzzle\Repository\Post as PostRepo;
 
 /**
- * Class TransitionTest.
+ * Class PoolTest.
  */
 class PoolTest extends \PHPUnit_Framework_TestCase
 {

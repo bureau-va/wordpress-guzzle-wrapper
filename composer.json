@@ -39,7 +39,7 @@
   "scripts": {
     "test": "phpunit",
     "fix": "php-cs-fixer fix src && php-cs-fixer fix tests",
-    "before-commit": "composer fix && composer test"
+    "pre-commit": "composer fix && composer test"
   },
   "extra": {
     "branch-alias": {
