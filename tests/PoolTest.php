@@ -66,6 +66,9 @@ class PoolTest extends \PHPUnit_Framework_TestCase
             ->addQuery('test1', $q1)
             ->addQuery('test2', $q2);
 
+        $promise = $pool->getClient()->getAsync('posts');
+        $pool->addPromise('test3', $promise);
+
         $data = $pool->unwrap();
 
         $this->assertArrayHasKey('test1', $data);
@@ -76,5 +79,8 @@ class PoolTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(PostEntity::class, $data['test2'][0]);
         $this->assertEquals(1, $data['test2'][0]->id);
         $this->assertEquals(1, $data['test2'][0]['id']);
+
+        $this->assertArrayHasKey('test3', $data);
+
     }
 }

@@ -80,9 +80,9 @@ class Pool
     /**
      * @param Promise $promise
      */
-    public function addPromise(Promise $promise)
+    public function addPromise($name, Promise $promise)
     {
-        $this->promises[] = $promise;
+        $this->promises[$name] = $promise;
     }
 
     /**
@@ -91,7 +91,7 @@ class Pool
     private function flushPromises()
     {
         foreach ($this->queries as $key => $query) {
-            var_dump((string) $query);
+
             $this->promises[$key] = $this->client->getAsync((string) $query);
             unset($this->queries[$key]);
         }
