@@ -43,7 +43,7 @@ class PoolTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test main pool function responsible for all the rest logic
+     * Test main pool function responsible for all the rest logic.
      */
     public function testSimplePoolUnwrap()
     {
@@ -56,7 +56,6 @@ class PoolTest extends \PHPUnit_Framework_TestCase
             'post' => PostEntity::class,
         ));
         $pool->addTransformer(array($typeCaster, 'castType'));
-
 
         $q1 = new PostQuery();
         $q1->whereId(1);

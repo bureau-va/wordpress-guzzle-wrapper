@@ -78,7 +78,6 @@ class Pool
     }
 
     /**
-     *
      * @param Promise $promise
      */
     public function addPromise(Promise $promise)
@@ -92,8 +91,8 @@ class Pool
     private function flushPromises()
     {
         foreach ($this->queries as $key => $query) {
-            var_dump((string)$query);
-            $this->promises[$key] = $this->client->getAsync((string)$query);
+            var_dump((string) $query);
+            $this->promises[$key] = $this->client->getAsync((string) $query);
             unset($this->queries[$key]);
         }
 
@@ -131,7 +130,7 @@ class Pool
 
         return $req->then(function ($res) use ($transformers) {
 
-            $data = \json_decode((string)$res->getBody());
+            $data = \json_decode((string) $res->getBody());
 
             if (is_object($data)) {
                 foreach ($transformers as $transformer) {
@@ -148,7 +147,7 @@ class Pool
             return $data;
         }, function (RequestException $e) {
 
-            echo $e->getMessage() . $e->getRequest()->getUri().PHP_EOL;
+            echo $e->getMessage().$e->getRequest()->getUri().PHP_EOL;
         });
     }
 

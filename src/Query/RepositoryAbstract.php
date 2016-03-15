@@ -21,7 +21,7 @@ abstract class RepositoryAbstract
      */
     public function __toString()
     {
-        $ar = (array)$this;
+        $ar = (array) $this;
 
         return $this->prepareCall($ar);
     }
@@ -34,10 +34,10 @@ abstract class RepositoryAbstract
     private function prepareCall($ar)
     {
         if (count($ar) === 1 && isset($ar['post__in']) && is_numeric($ar['post__in'])) {
-            return self::$BASE_PATH . '/' . $ar['post__in'];
+            return self::$BASE_PATH.'/'.$ar['post__in'];
         }
 
-        return self::$BASE_PATH . '?' . http_build_query([
+        return self::$BASE_PATH.'?'.http_build_query([
             'filter' => $ar,
         ]);
     }
@@ -66,7 +66,7 @@ abstract class RepositoryAbstract
      */
     public function whereId($id)
     {
-        $this->post__in = (int)$id;
+        $this->post__in = (int) $id;
 
         return $this;
     }
@@ -86,7 +86,7 @@ abstract class RepositoryAbstract
 
     public function whereIds($ids)
     {
-        $this->post__in = (array)$ids;
+        $this->post__in = (array) $ids;
 
         return $this;
     }
