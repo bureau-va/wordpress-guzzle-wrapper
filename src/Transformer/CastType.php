@@ -30,6 +30,7 @@ class CastType
      */
     public function castType($ob, $typeName = null)
     {
+
         if ($typeName === null) {
             $typeName = $this->typeName;
         }
@@ -69,14 +70,6 @@ class CastType
     public function getMapping($key)
     {
         return $this->mappings[$key];
-    }
-
-    /**
-     * @return array
-     */
-    public function getMappings()
-    {
-        return $this->mappings;
     }
 
     /**

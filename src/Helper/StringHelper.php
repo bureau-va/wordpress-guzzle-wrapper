@@ -42,4 +42,16 @@ class StringHelper
 
         return $str;
     }
+
+    /**
+     * Converts camel case to snake case.
+     *
+     * @param $string
+     *
+     * @return string
+     */
+    public static function camelCaseToSnakeCase($string)
+    {
+        return strtolower(preg_replace(['/([a-z\d])([A-Z])/', '/([^_])([A-Z][a-z])/'], '$1_$2', $string));
+    }
 }

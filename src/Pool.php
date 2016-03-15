@@ -8,6 +8,8 @@
 namespace BureauVa\WordpressGuzzle;
 
 use GuzzleHttp\Promise\Promise;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 /**
  * Class Pool.
@@ -17,24 +19,46 @@ class Pool
     /**
      * @var array
      */
+    private $queries = [];
+    /**
+     * @var array
+     */
     private $promises = [];
     /**
      * @var array
      */
     private $transformers = [];
+    /**
+     * @var CachePool
+     */
+    private $cachePool = null;
+    /**
+     * @var Client
+     */
+    protected $client = null;
 
     /**
-     * Awaits all the requests.
+     * let us keep reference to our client.
+     *
+     * @return mixed
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Awaits all the requests attaching callbacks before.
      *
      * @return mixed
      */
     public function unwrap()
     {
-        $promises = $this->getPromises();
+        $promises = $this->flushPromises();
         if (empty($promises)) {
             return [];
         }
-        foreach($promises as $key => $promise){
+        foreach ($promises as $key => $promise) {
             $promises[$key] = $this->attachTransforms($promise);
         }
 
@@ -46,30 +70,34 @@ class Pool
      *
      * @return $this
      */
-    public function addPromise($key, Promise $query)
+    public function addQuery($key, $query)
     {
-
-        $this->promises[$key] = $query;
+        $this->queries[$key] = $query;
 
         return $this;
+    }
+
+    /**
+     *
+     * @param Promise $promise
+     */
+    public function addPromise(Promise $promise)
+    {
+        $this->promises[] = $promise;
     }
 
     /**
      * @return array
      */
-    public function getPromises()
+    private function flushPromises()
     {
+        foreach ($this->queries as $key => $query) {
+            var_dump((string)$query);
+            $this->promises[$key] = $this->client->getAsync((string)$query);
+            unset($this->queries[$key]);
+        }
+
         return $this->promises;
-    }
-
-    /**
-     * @param array $promises
-     */
-    public function setPromises($promises)
-    {
-        $this->promises = $promises;
-
-        return $this;
     }
 
     /**
@@ -78,16 +106,6 @@ class Pool
     public function getTransformers()
     {
         return $this->transformers;
-    }
-
-    /**
-     * @param array $transformers
-     */
-    public function setTransformers($transformers)
-    {
-        $this->transformers = $transformers;
-
-        return $this;
     }
 
     /**
@@ -107,15 +125,15 @@ class Pool
     /**
      * @param Promise $promise
      */
-    public function attachTransforms(Promise $promise)
+    public function attachTransforms(Promise $req)
     {
-        $transformers = $this->transformers;
+        $transformers = $this->getTransformers();
 
-        return $promise->then(function ($res) use ($transformers) {
+        return $req->then(function ($res) use ($transformers) {
 
             $data = \json_decode((string)$res->getBody());
 
-            if ($data instanceof \stdClass) {
+            if (is_object($data)) {
                 foreach ($transformers as $transformer) {
                     $data = \call_user_func($transformer, $data);
                 }
@@ -128,7 +146,41 @@ class Pool
             }
 
             return $data;
+        }, function (RequestException $e) {
+
+            echo $e->getMessage() . $e->getRequest()->getUri().PHP_EOL;
         });
     }
 
+    /**
+     *
+     */
+    public function getCachePool()
+    {
+        return $this->cachePool;
+    }
+
+    /**
+     * @param null $cachePool
+     */
+    public function setCachePool($cachePool)
+    {
+        $this->cachePool = $cachePool;
+
+        return $this;
+    }
+
+    /**
+     * Let us set our client reference taken from transaction.
+     *
+     * @param $client
+     *
+     * @return RepositoryAbstract
+     */
+    public function setClient(Client $client)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
 }

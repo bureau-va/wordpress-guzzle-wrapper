@@ -22,8 +22,12 @@ class EntityTest extends \PHPUnit_Framework_TestCase
     {
         $entity = new Post();
         $entity['test'] = 'test';
+        $entity[] = 'test1';
+        $entity[] = 'test2';
+        $entity[] = 'test3';
         $this->assertEquals('test', $entity->test);
         $this->assertEquals('test', $entity['test']);
+        $this->assertEquals('test3', $entity[2]);
         $this->assertEquals(true, isset($entity['test']));
         $this->assertEquals(true, isset($entity->test));
         unset($entity['test']);
