@@ -3,8 +3,9 @@
   "type": "library",
   "description": "Wordpress guzzle wrapper ",
   "keywords": [
-    "maciekpaprocki",
-    "wordpress-guzzle-wrapper"
+    "wordpress",
+    "rest",
+    "api"
   ],
   "homepage": "https://github.com/bureau-va/wordpress-guzzle-wrapper",
   "license": "MIT",
@@ -33,7 +34,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "BureauVa\\WordpressGuzzle\\Test\\": "tests"
+      "BureauVa\\WordpressGuzzle\\Tests\\": "tests"
     }
   },
   "scripts": {

@@ -7,48 +7,21 @@
  */
 namespace BureauVa\WordpressGuzzle\Tests;
 
-use BureauVa\WordpressGuzzle\Pool;
-use BureauVa\WordpressGuzzle\Query\Post;
 use BureauVa\WordpressGuzzle\Transformer\CastType;
-use GuzzleHttp\Client;
 use BureauVa\WordpressGuzzle\Query\Post as PostQuery;
 use BureauVa\WordpressGuzzle\Entity\Post as PostEntity;
 
 /**
- * Class PoolTest.
+ * Class PoolTest. Base App test.
  */
 class PoolTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * Testing main usage.
-     */
-    public function __construct()
-    {
-    }
-
-    /**
-     * Creates reusable pools.
-     *
-     * @return Pool
-     */
-    public function getPool()
-    {
-        $client = new Client([
-            'base_uri' => 'http://ec2-54-229-0-236.eu-west-1.compute.amazonaws.com/admin/wp-json/',
-        ]);
-        $pool = new Pool();
-        $pool->setClient($client);
-
-        return $pool;
-    }
-
     /**
      * Test main pool function responsible for all the rest logic.
      */
     public function testSimplePoolUnwrap()
     {
-        //Setting base Buzzle client
-        $pool = $this->getPool();
+        $pool = Helper::getPool();
         $this->assertEquals([], $pool->unwrap());
 
         $typeCaster = new CastType('type');
@@ -81,6 +54,5 @@ class PoolTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $data['test2'][0]['id']);
 
         $this->assertArrayHasKey('test3', $data);
-
     }
 }

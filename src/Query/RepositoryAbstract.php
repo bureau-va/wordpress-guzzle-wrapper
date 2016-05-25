@@ -8,6 +8,7 @@
 namespace BureauVa\WordpressGuzzle\Query;
 
 use BureauVa\WordpressGuzzle\Helper\StringHelper as S;
+use Cache\Adapter\Common\AbstractCachePool as CachePool;
 
 /**
  * Class AbstractRepository.
@@ -89,5 +90,16 @@ abstract class RepositoryAbstract
         $this->post__in = (array) $ids;
 
         return $this;
+    }
+
+    /**
+     * Checks if there is any cache data for query.
+     *
+     * @param CachePool $cachePool
+     */
+    public function getCacheKey()
+    {
+        //TODO: implement real cache check, no it uses not so smart method of caching by query address
+        return (string) $this;
     }
 }
